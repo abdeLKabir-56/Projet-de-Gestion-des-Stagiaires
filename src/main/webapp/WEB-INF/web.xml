@@ -45,4 +45,14 @@
     <servlet-name>generatePdf</servlet-name>
     <url-pattern>/generatePdf</url-pattern>
   </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>LoginGoogleHandler</display-name>
+    <servlet-name>LoginGoogleHandler</servlet-name>
+    <servlet-class>loginGoogle.LoginGoogleHandler</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LoginGoogleHandler</servlet-name>
+    <url-pattern>/LoginGoogleHandler</url-pattern>
+  </servlet-mapping>
 </web-app>

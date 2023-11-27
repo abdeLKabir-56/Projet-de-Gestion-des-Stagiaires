@@ -38,6 +38,7 @@ public class LoginServelet extends HttpServlet {
 		//testing
 		PrintWriter out = response.getWriter();
 //		out.write("working ...");
+		
 		String email = request.getParameter("email");
 		String password = request.getParameter("password");
 		String position = request.getParameter("postion");

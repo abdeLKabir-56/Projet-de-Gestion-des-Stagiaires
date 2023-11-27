@@ -4,17 +4,7 @@ if(session.getAttribute("name")==null)
 	response.sendRedirect("login.jsp");
 }
 %>
-<%@
-page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
-%>
-<%
-    Document document=new Document(); 
-    PdfWriter.getInstance(document,new FileOutputStream("C:\\hello.pdf"));
-    document.open();
-    document.add(new Paragraph("Daily Briefing Sheet"));
-    document.add(new Paragraph(request.getParameter("name")));
-    
-%>
+
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -64,18 +54,8 @@ page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
                     <div class="col-md-2">
                      <a class="profile-logout-btn" href="logout">Logout</a>
                     </div>
-                   <form method="post" action="generatePdf"  class="col-md-2">
-				    <!-- Add other form fields as needed -->
-				    <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
-				    <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
-				    <input type="hidden" name="email" value="<%= request.getParameter("email") %>">
-				    <input type="hidden" name="phone" value="<%= request.getParameter("phone") %>">
-				    <input type="hidden" name="profession" value="<%= request.getParameter("profession") %>">
-				    <!-- Add other form fields as needed -->
-				
-				    <!-- Add a button to trigger PDF generation -->
-				    <input type="submit" value="Generate Attestation" class="profile-edit-btn" name="GenerateAttestation">
-				</form>
+                   
+                   
                   
                 </div>
                 <div class="row">
@@ -95,6 +75,8 @@ page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
                             <a href="">PHP, .Net</a><br/>
                         </div>
                     </div>
+		   
+		 
                     <div class="col-md-8">
                         <div class="tab-content profile-tab" id="myTabContent">
                             <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
@@ -103,15 +85,15 @@ page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
                                                 <label >User Id</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p name="name">Kshiti123</p>
+                                                <p name="userId">Kshiti123</p>
                                             </div>
                                         </div>
                                         <div class="row">
                                             <div class="col-md-6">
-                                                <label>Name</label>
+                                                <label >Name</label>
                                             </div>
                                             <div class="col-md-6">
-                                                <p>Kshiti Ghelani</p>
+                                                <p name="name">Kshiti Ghelani</p>
                                             </div>
                                         </div>
                                         <div class="row">
@@ -145,6 +127,18 @@ page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
                                         <label>Your Bio</label><br/>
                                         <p>Your detail description</p>
                                     </div>
+                                    <form method="post" action="generatePdf">
+									    <!-- Add other form fields as needed -->
+									    <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
+									    <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
+									    <input type="hidden" name="email" value="<%= request.getParameter("email") %>">
+									    <input type="hidden" name="phone" value="<%= request.getParameter("phone") %>">
+									    <input type="hidden" name="profession" value="<%= request.getParameter("profession") %>">
+									    <!-- Add other form fields as needed -->
+									
+									    <!-- Add a button to trigger PDF generation -->
+									    <input type="submit" value="Generate Attestation" class="profile-edit-btn" name="GenerateAttestation">
+									</form>
                                 </div>
                             </div>
                         </div>
@@ -152,5 +146,6 @@ page import="java.io.*, com.itextpdf.text.*, com.itextpdf.text.pdf.*"
                 </div>
             </form>           
         </div>
+        
 </body>
 </html>
