@@ -66,9 +66,13 @@ public class LoginGoogleHandler extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		String code = request.getParameter("code");
+		
 		String accessToken = getToken(code);
 		UserGoogleDto user = getUserInfo(accessToken);
 		System.out.println(user);
+		request.setAttribute("google_email", user.getEmail());
+		request.setAttribute("google_password", user.getId());
+		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 
 	/**

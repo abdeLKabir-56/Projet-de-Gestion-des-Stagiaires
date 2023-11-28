@@ -37,12 +37,12 @@
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
 									type="text" name="email" id="email"
-									placeholder="Your email or Username" />
+									placeholder="Your email or Username" value="<%= request.getAttribute("google_email")%>"/>
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
 									type="password" name="password" id="password"
-									placeholder="Password" />
+									placeholder="Password" value="<%= request.getAttribute("google_password")%>"/>
 							</div>
 							<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 							<div class="form-group">
@@ -54,10 +54,7 @@
 					        	</select>
 							</div>
 							<div class="form-group">
-								<input type="checkbox" name="remember-me" id="remember-me"
-									class="agree-term" /> <label for="remember-me"
-									class="label-agree-term"><span><span></span></span>Remember
-									me</label>
+								<a href="forgotPassword.jsp">Forgot Password?</a>
 							</div>
 							<div class="form-group form-button">
 								<input type="submit" name="signin" id="signin"
@@ -71,7 +68,7 @@
 										class="display-flex-center zmdi zmdi-facebook"></i></a></li>
 								<li><a href="#"><i
 										class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-								<li><a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8081/LoginGoogleHandler&response_type=code
+								<li><a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8081/Login_registration_j2ee/LoginGoogleHandler&response_type=code
 		   &client_id=273113573870-45u4eu77is37qg753rj0slgrdng9g539.apps.googleusercontent.com&approval_prompt=force"><i
 										class="display-flex-center zmdi zmdi-google"></i></a></li>
 							</ul>
@@ -94,6 +91,14 @@
 		if(status == "failed")
 		{
 			swal("Sorry","Your mail or password are incorrect","error");
+		}
+		if(status == "resetSuccess")
+		{
+			swal("gongrats","your password reseted successfully","success");
+		}
+		if(status == "resetFailed")
+		{
+			swal("Sorry","Your  password not reseted successfully","error");
 		}
 	</script>
 </body>

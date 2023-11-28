@@ -49,10 +49,40 @@
     <description></description>
     <display-name>LoginGoogleHandler</display-name>
     <servlet-name>LoginGoogleHandler</servlet-name>
-    <servlet-class>loginGoogle.LoginGoogleHandler</servlet-class>
+    <servlet-class>LoginGoogle.LoginGoogleHandler</servlet-class>
   </servlet>
   <servlet-mapping>
     <servlet-name>LoginGoogleHandler</servlet-name>
     <url-pattern>/LoginGoogleHandler</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ForgotPassword</display-name>
+    <servlet-name>ForgotPassword</servlet-name>
+    <servlet-class>Registration.ForgotPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ForgotPassword</servlet-name>
+    <url-pattern>/forgotPassword</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>ValidateOtp</display-name>
+    <servlet-name>ValidateOtp</servlet-name>
+    <servlet-class>Registration.ValidateOtp</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValidateOtp</servlet-name>
+    <url-pattern>/ValidateOtp</url-pattern>
+  </servlet-mapping>
+  <servlet>
+    <description></description>
+    <display-name>NewPassword</display-name>
+    <servlet-name>NewPassword</servlet-name>
+    <servlet-class>Registration.NewPassword</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>NewPassword</servlet-name>
+    <url-pattern>/NewPassword</url-pattern>
   </servlet-mapping>
 </web-app>
