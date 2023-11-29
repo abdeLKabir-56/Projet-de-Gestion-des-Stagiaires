@@ -7,8 +7,15 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import com.google.gson.Gson;
 import com.google.gson.JsonObject;
+
+import Persistance.DBConnexion;
+
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 
 import org.apache.catalina.connector.ClientAbortException;
 import org.apache.http.client.ClientProtocolException;
@@ -20,7 +27,7 @@ import org.apache.http.client.fluent.Form;
 
 public class LoginGoogleHandler extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+    private Connection conn = new DBConnexion().getconnexion();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -71,7 +78,28 @@ public class LoginGoogleHandler extends HttpServlet {
 		UserGoogleDto user = getUserInfo(accessToken);
 		System.out.println(user);
 		request.setAttribute("google_email", user.getEmail());
-		request.setAttribute("google_password", user.getId());
+		//Connection conn = null;
+		String password = null;
+		try {
+			
+            String query = "select password from users where email = ?";
+            PreparedStatement ps = conn.prepareStatement(query);
+            
+            ps.setString(1, user.getEmail());
+            
+            ResultSet rs = ps.executeQuery();
+            if(rs.next()) {
+            	
+            	 password = rs.getString("password");
+            	
+			}
+		}catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		request.setAttribute("google_password", password);
+		request.setAttribute("picture", user.getPicture());
 		request.getRequestDispatcher("login.jsp").forward(request, response);
 	}
 

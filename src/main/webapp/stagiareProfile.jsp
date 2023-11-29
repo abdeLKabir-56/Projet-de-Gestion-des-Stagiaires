@@ -13,6 +13,7 @@ if(session.getAttribute("name")==null)
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <link href="css/stagiare.css" rel="stylesheet">
+<link rel="icon" type="image/x-icon" href="images/short-icon.ico">
 </head>
 <body>
 	

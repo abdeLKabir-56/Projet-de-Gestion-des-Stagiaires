@@ -1,6 +1,6 @@
 <html>
 <head>
-
+<link rel="icon" type="image/x-icon" href="images/short-icon.ico">
 <link
 	href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css"
 	rel="stylesheet" id="bootstrap-css">

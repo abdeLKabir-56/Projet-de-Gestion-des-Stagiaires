@@ -15,13 +15,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+
+import AdminOperations.User;
+import Persistance.DBConnexion;
 
 /**
  * Servlet implementation class LoginServelet
  */
 public class LoginServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+      private ArrayList<User>Users;
+      private Connection conn = new DBConnexion().getconnexion();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -46,14 +51,11 @@ public class LoginServelet extends HttpServlet {
 //		out.write(email);
 //		out.write(password);
 		RequestDispatcher dispatcher = null;
-		Connection conn = null;
+		//Connection conn = null;
 		HttpSession session = request.getSession();
+		Users = new ArrayList<>();
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-            
-            //creating connection with the database 
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users_login", "root", "abc123abc");
-            System.out.println("connected succefully");
+			
             String query = "select * from users where email = ? and password = ? and position = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             
@@ -73,6 +75,7 @@ public class LoginServelet extends HttpServlet {
 				}else {
 					dispatcher = request.getRequestDispatcher("stagiareProfile.jsp");
 				}
+            	Users.add(new User(rs.getString("email"),rs.getString("password"),rs.getString("position")));
             	//dispatcher = request.getRequestDispatcher("index.jsp");
 			}else
 			{

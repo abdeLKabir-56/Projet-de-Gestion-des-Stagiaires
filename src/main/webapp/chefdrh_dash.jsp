@@ -10,7 +10,8 @@ if(session.getAttribute("name")==null)
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<link rel="icon" type="image/x-icon" href="images/short-icon.ico">
+<title>chef drh dashboard </title>
 </head>
 <body>
 chef drh dashboard here ..

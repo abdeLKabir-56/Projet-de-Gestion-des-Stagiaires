@@ -4,6 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<link rel="icon" type="image/x-icon" href="images/short-cut.svg">
 <title>Sign in Form</title>
 
 <!-- Font Icon -->
@@ -45,6 +46,7 @@
 									placeholder="Password" value="<%= request.getAttribute("google_password")%>"/>
 							</div>
 							<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
+							<input type="hidden" id="status" name="picture" value="<%= request.getAttribute("picture")%>">
 							<div class="form-group">
 								<label for="postion"><i class="zmdi zmdi-lock-outline"></i></label>
 								<select   name="postion" style="border:none;width:120px;height:25px; margin-left:20px;">
@@ -68,7 +70,7 @@
 										class="display-flex-center zmdi zmdi-facebook"></i></a></li>
 								<li><a href="#"><i
 										class="display-flex-center zmdi zmdi-twitter"></i></a></li>
-								<li><a href="https://accounts.google.com/o/oauth2/auth?scope=profile&redirect_uri=http://localhost:8081/Login_registration_j2ee/LoginGoogleHandler&response_type=code
+								<li><a href="https://accounts.google.com/o/oauth2/auth?scope=email&redirect_uri=http://localhost:8081/Login_registration_j2ee/LoginGoogleHandler&response_type=code
 		   &client_id=273113573870-45u4eu77is37qg753rj0slgrdng9g539.apps.googleusercontent.com&approval_prompt=force"><i
 										class="display-flex-center zmdi zmdi-google"></i></a></li>
 							</ul>
@@ -101,6 +103,8 @@
 			swal("Sorry","Your  password not reseted successfully","error");
 		}
 	</script>
+	
+</script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

@@ -15,13 +15,15 @@ import java.sql.SQLException;
 
 import javax.swing.text.html.HTMLDocument.HTMLReader.PreAction;
 
+import Persistance.DBConnexion;
+
 /**
  * Servlet implementation class RegistrationServelet
  */
 
 public class RegistrationServelet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
-       
+	private Connection conn = new DBConnexion().getconnexion();
     /**
      * @see HttpServlet#HttpServlet()
      */
@@ -44,7 +46,7 @@ public class RegistrationServelet extends HttpServlet {
 		String contact=request.getParameter("contact");
 		String position=request.getParameter("postion");
 		RequestDispatcher dispatcher = null;
-		Connection conn = null;
+		//Connection conn = null;
 		//String checkbox=request.getParameter("agree-term");
 //		out.write(name);
 //		out.write(email);
@@ -53,11 +55,7 @@ public class RegistrationServelet extends HttpServlet {
 //		out.write(contact);
 //		out.write(position);
 		try {
-			Class.forName("com.mysql.jdbc.Driver");
-            
-            //creating connection with the database 
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users_login", "root", "abc123abc");
-            System.out.println("connected succefully");
+			
             String query="INSERT INTO users (username,password,email,numero_tele,position) VALUES(?,?,?,?,?)";
             PreparedStatement ps=conn.prepareStatement(query);
             ps.setString(1, name);
