@@ -82,7 +82,7 @@ public class LoginGoogleHandler extends HttpServlet {
 		String password = null;
 		try {
 			
-            String query = "select password from users where email = ?";
+            String query = "select password from user where email = ?";
             PreparedStatement ps = conn.prepareStatement(query);
             
             ps.setString(1, user.getEmail());
@@ -91,6 +91,7 @@ public class LoginGoogleHandler extends HttpServlet {
             if(rs.next()) {
             	
             	 password = rs.getString("password");
+            	 
             	
 			}
 		}catch (Exception e) {

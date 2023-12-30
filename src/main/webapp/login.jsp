@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -16,7 +17,7 @@
 </head>
 <body>
 
-	<div class="main">
+	<div class="main" id="particles-js">
 
 		<!-- Sing in  Form -->
 		<section class="sign-in">
@@ -38,12 +39,12 @@
 								<label for="username"><i
 									class="zmdi zmdi-account material-icons-name"></i></label> <input
 									type="text" name="email" id="email"
-									placeholder="Your email or Username" value="<%= request.getAttribute("google_email")%>"/>
+									placeholder="Your email or Username" value="<%= (request.getAttribute("google_email") != null) ? request.getAttribute("google_email") : "" %>"/>
 							</div>
 							<div class="form-group">
 								<label for="password"><i class="zmdi zmdi-lock"></i></label> <input
 									type="password" name="password" id="password"
-									placeholder="Password" value="<%= request.getAttribute("google_password")%>"/>
+									placeholder="Password" value="<%= (request.getAttribute("google_password") != null) ? request.getAttribute("google_password") : "" %>"/>
 							</div>
 							<input type="hidden" id="status" value="<%= request.getAttribute("status")%>">
 							<input type="hidden" id="status" name="picture" value="<%= request.getAttribute("picture")%>">
@@ -105,6 +106,8 @@
 	</script>
 	
 </script>
+ <script src="js/particles.js"></script>
+ <script src="js/app.js"></script>
 </body>
 <!-- This templates was made by Colorlib (https://colorlib.com) -->
 </html>

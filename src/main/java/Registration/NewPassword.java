@@ -43,7 +43,7 @@ public class NewPassword extends HttpServlet {
 
 			try {
 				
-				PreparedStatement pst = con.prepareStatement("update users set password = ? where email = ? ");
+				PreparedStatement pst = con.prepareStatement("update user set password = ? where email = ? ");
 				pst.setString(1, newPassword);
 				pst.setString(2, (String) session.getAttribute("email"));
 

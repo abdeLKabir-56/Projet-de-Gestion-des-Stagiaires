@@ -11,7 +11,7 @@ public class DBConnexion {
 			Class.forName("com.mysql.jdbc.Driver");
             
             //creating connection with the database 
-             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/users_login", "root", "abc123abc");
+             conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/demo?useSSL=false&serverTimezone=UTC", "root", "abc123abc");
             System.out.println("connected succefully");
 		
 	}catch (Exception e) {

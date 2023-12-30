@@ -22,9 +22,22 @@ if(session.getAttribute("name")==null)
 <script src="//maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
-
-<div class="container emp-profile">
-            <form method="post">
+<script src="js/particles.js"></script>
+    <script src="js/app.js"></script>
+<div class="container emp-profile" >
+ <form method="post" action="generatePdf" >
+									    <!-- Add other form fields as needed -->
+									    <input type="hidden" name="name" value="<%= request.getParameter("email") %>">
+									    
+									    <input type="hidden" name="email" value="<%= request.getParameter("password") %>">
+									   
+									    <input type="hidden" name="profession" value="ah">
+									    <!-- Add other form fields as needed -->
+									
+									    <!-- Add a button to trigger PDF generation -->
+									    <input type="submit" value="Generate Attestation" class="profile-generate-btn" name="GenerateAttestation">
+		</form>     
+            <form method="post" id="particles-js">
                 <div class="row">
                     <div class="col-md-4">
                         <div class="profile-img">
@@ -38,7 +51,8 @@ if(session.getAttribute("name")==null)
                     <div class="col-md-6">
                         <div class="profile-head">
                                     <h5>
-                                        Kshiti Ghelani
+                                    <%= request.getParameter("username") %>
+                                       
                                     </h5>
                                     <h6>
                                         Web Developer and Designer
@@ -62,7 +76,7 @@ if(session.getAttribute("name")==null)
                 <div class="row">
                     <div class="col-md-4">
                     <input type="submit" class="profile-edit-btn" name="btnAddMore" value="Edit Profile"/>
-                    <a type="submit" class="profile-edit-btn" name="GenerateAtterstation">Generer l'attestation de stage</a>
+                    
                         <div class="profile-work">
                             <p>WORK LINK</p>
                             <a href="">Website Link</a><br/>
@@ -128,25 +142,15 @@ if(session.getAttribute("name")==null)
                                         <label>Your Bio</label><br/>
                                         <p>Your detail description</p>
                                     </div>
-                                    <form method="post" action="generatePdf">
-									    <!-- Add other form fields as needed -->
-									    <input type="hidden" name="name" value="<%= request.getParameter("name") %>">
-									    <input type="hidden" name="userId" value="<%= request.getParameter("userId") %>">
-									    <input type="hidden" name="email" value="<%= request.getParameter("email") %>">
-									    <input type="hidden" name="phone" value="<%= request.getParameter("phone") %>">
-									    <input type="hidden" name="profession" value="<%= request.getParameter("profession") %>">
-									    <!-- Add other form fields as needed -->
-									
-									    <!-- Add a button to trigger PDF generation -->
-									    <input type="submit" value="Generate Attestation" class="profile-edit-btn" name="GenerateAttestation">
-									</form>
+                                   
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </form>           
+            </form>   
+              
         </div>
-        
+          
 </body>
 </html>

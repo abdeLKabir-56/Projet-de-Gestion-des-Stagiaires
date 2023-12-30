@@ -1,6 +1,7 @@
 package Registration;
 
 import jakarta.servlet.RequestDispatcher;
+
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
@@ -17,9 +18,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 
-import AdminOperations.User;
-import Persistance.DBConnexion;
 
+import Persistance.DBConnexion;
+import usermanagment.model.User;
 /**
  * Servlet implementation class LoginServelet
  */
@@ -56,26 +57,29 @@ public class LoginServelet extends HttpServlet {
 		Users = new ArrayList<>();
 		try {
 			
-            String query = "select * from users where email = ? and password = ? and position = ?";
+            String query = "select * from user where email = ? and password = ? and position = ?";
             PreparedStatement ps = conn.prepareStatement(query);
-            
+             
             ps.setString(1, email);
             ps.setString(2, password);
             ps.setString(3, position);
             ResultSet rs = ps.executeQuery();
             if(rs.next()) {
             	System.out.println("here...");
-            	session.setAttribute("name", rs.getString("username"));
+            	session.setAttribute("name", rs.getString("name"));
             	String pos = rs.getString("position");
             	if(pos.equals("chefDrh"))
             	{
-            		dispatcher = request.getRequestDispatcher("chefdrh_dash.jsp");
+            		dispatcher = request.getRequestDispatcher("user-list.jsp");
             	}else if (pos.equals("adminDrh")) {
-            		dispatcher = request.getRequestDispatcher("adminDashbord.jsp");
+            		dispatcher = request.getRequestDispatcher("user-list.jsp");
 				}else {
 					dispatcher = request.getRequestDispatcher("stagiareProfile.jsp");
 				}
-            	Users.add(new User(rs.getString("email"),rs.getString("password"),rs.getString("position")));
+            	request.setAttribute("email", rs.getString("email"));
+            	request.setAttribute("password",rs.getString("password"));
+            	request.setAttribute("position", rs.getString("position"));
+            	
             	//dispatcher = request.getRequestDispatcher("index.jsp");
 			}else
 			{
@@ -86,13 +90,6 @@ public class LoginServelet extends HttpServlet {
 		}catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 	}
 

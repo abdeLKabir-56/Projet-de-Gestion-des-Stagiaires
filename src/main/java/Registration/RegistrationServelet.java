@@ -56,12 +56,13 @@ public class RegistrationServelet extends HttpServlet {
 //		out.write(position);
 		try {
 			
-            String query="INSERT INTO users (username,password,email,numero_tele,position) VALUES(?,?,?,?,?)";
+            String query="INSERT INTO user (contact, email, name, password, position) VALUES(?,?,?,?,?)";
             PreparedStatement ps=conn.prepareStatement(query);
-            ps.setString(1, name);
-            ps.setString(2, password);
-            ps.setString(3, email);
-            ps.setString(4, contact);
+           
+            ps.setString(1, contact);
+            ps.setString(2, email);
+            ps.setString(3, name);
+            ps.setString(4, password);//new PasswordEncryptionUtil().encryptPassword(password)
             ps.setString(5, position);
             int i = ps.executeUpdate();
             dispatcher = request.getRequestDispatcher("registration.jsp");
@@ -76,15 +77,16 @@ public class RegistrationServelet extends HttpServlet {
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally {
-			//clear the resources
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
+		//			finally {
+//			//clear the resources
+//			try {
+//				conn.close();
+//			} catch (SQLException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		}
 	}
 
 	/**

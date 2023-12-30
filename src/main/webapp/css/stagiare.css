@@ -47,6 +47,16 @@ body{
     color: #6c757d;
     cursor: pointer;
 }
+.profile-generate-btn{
+    border: none;
+    border-radius: 1.5rem;
+    width: 70%;
+    padding: 5px;
+    font-weight: 600;
+    background-color: #fff;
+    color: #6c757d;
+    cursor: pointer;
+}
 .profile-logout-btn{
     border: 1px solid transparent;
     border-radius: 1.5rem;
