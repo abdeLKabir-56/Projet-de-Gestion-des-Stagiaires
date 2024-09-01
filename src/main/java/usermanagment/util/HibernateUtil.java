@@ -19,7 +19,7 @@ public class HibernateUtil {
 					settings.put(Environment.DRIVER, "com.mysql.jdbc.Driver");
 	                settings.put(Environment.URL, "jdbc:mysql://localhost:3306/demo?useSSL=false&serverTimezone=UTC");
 	                settings.put(Environment.USER, "root");
-	                settings.put(Environment.PASS, "abc123abc");
+	                settings.put(Environment.PASS, "");
 	                settings.put(Environment.DIALECT, "org.hibernate.dialect.MySQL5Dialect");
 
 	                settings.put(Environment.SHOW_SQL, "true");
